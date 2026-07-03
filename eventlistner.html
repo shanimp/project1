@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrion form</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 300px;
+      }
+      #feedback {
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signup-form">
+      <label for="username">Username: </label>
+      <input type="text" id="username" name="username" required />
+
+      <p id="feedback"></p>
+      <button type="submit">Register</button>
+    </form>
+
+    <script>
+      const registrationForm = document.querySelector("#signup-form");
+      const usernameInput = document.querySelector("#username");
+      const feedback = document.querySelector("#feedback");
+
+      usernameInput.addEventListener("input", (event) => {
+        const value = event.target.value;
+        if (value.length < 3) {
+          feedback.textContent = "Too short!";
+        } else {
+          feedback.textContent = "Looks good!";
+        }
+      });
+
+      registrationForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const userobject = {
+          username: formData.get("username"),
+          timestamp: new Date().toISOString(),
+        };
+
+        console.log("Form submitted. object created: ", userobject);
+        alert("check the console for the userobject!");
+      });
+    </script>
+  </body>
+</html>

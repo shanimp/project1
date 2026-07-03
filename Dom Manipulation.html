@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Example</title>
+    <style>
+        .box {
+            padding: 20px;
+            background-color: lightblue;
+            border: 1px solid blue;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const container = document.getElementById("app"); // select "app" div
+        const newElement = document.createElement("div"); //create a new div and assign into newElement
+        newElement.textContent = "Hello world!"; // assign text to newElement
+        newElement.className = "box";
+        container.appendChild(newElement); //newly create div element add to the previous "app" div
+
+        const newElement2 = document.createElement("div");
+        newElement2.textContent = "Good Morning...";
+        newElement2.className = "box";
+        container.appendChild(newElement2);
+    </script>
+</body>
+</html>
